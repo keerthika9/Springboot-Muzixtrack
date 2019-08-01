@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/")
 public class TrackController {
@@ -30,8 +32,25 @@ public class TrackController {
     System.out.println(id);
     Track retrivedTrack = trackService.getById(id);
     return new ResponseEntity<>(retrivedTrack, HttpStatus.OK);
+  }
+    @GetMapping("track")
+    public ResponseEntity<?> getAllUsers()
+    {
+      return new ResponseEntity<List<Track>>( trackService.getAllTracks(), HttpStatus.OK);
+    }
+    @DeleteMapping("track/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable int id) {
 
+      Track trackRemoved = trackService.deleteById(id);
+      return  new ResponseEntity<>(trackRemoved,HttpStatus.OK);
+    }
+    @PatchMapping("track/{id}")
+    public ResponseEntity<?> updateById(@PathVariable int id, @RequestBody Track track){
+      Track trackUpdated= trackService.updateTrackbyId(id, track);
+      return new ResponseEntity<>(trackUpdated,HttpStatus.OK);
+
+    }
 
   }
 
-}
+

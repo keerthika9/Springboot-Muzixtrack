@@ -7,7 +7,7 @@ import java.util.List;
 public interface TrackService {
   public Track save(Track track);
   public Track getById(int id);
-  /*public List<Track> getAllTracks(Track track);
-  public Track deleteTrackById(int id);
-  public Track updateTrack(Track track);*/
+  public List<Track> getAllTracks();
+  public Track deleteById(int id);
+  public Track updateTrackbyId(int id, Track track);
 }
