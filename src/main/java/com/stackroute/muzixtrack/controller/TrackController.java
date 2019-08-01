@@ -39,7 +39,7 @@ public class TrackController {
       return new ResponseEntity<List<Track>>( trackService.getAllTracks(), HttpStatus.OK);
     }
     @DeleteMapping("track/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable int id) {
+    public ResponseEntity<?> deleteById(@PathVariable("id") int id) {
 
       Track trackRemoved = trackService.deleteById(id);
       return  new ResponseEntity<>(trackRemoved,HttpStatus.OK);
