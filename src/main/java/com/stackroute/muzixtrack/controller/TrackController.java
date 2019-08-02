@@ -33,7 +33,7 @@ public class TrackController {
     Track retrivedTrack = trackService.getById(id);
     return new ResponseEntity<>(retrivedTrack, HttpStatus.OK);
   }
-    @GetMapping("track")
+    @GetMapping("tracks")
     public ResponseEntity<?> getAllUsers()
     {
       return new ResponseEntity<List<Track>>( trackService.getAllTracks(), HttpStatus.OK);
