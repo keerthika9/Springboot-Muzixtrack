@@ -13,6 +13,7 @@ import java.util.List;
 @RequestMapping("api/v1/")
 public class TrackController {
   private TrackService trackService;
+
   public TrackController() {
   }
 
@@ -33,24 +34,26 @@ public class TrackController {
     Track retrivedTrack = trackService.getById(id);
     return new ResponseEntity<>(retrivedTrack, HttpStatus.OK);
   }
-    @GetMapping("tracks")
-    public ResponseEntity<?> getAllUsers()
-    {
-      return new ResponseEntity<List<Track>>( trackService.getAllTracks(), HttpStatus.OK);
-    }
-    @DeleteMapping("track/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable("id") int id) {
 
-      Track trackRemoved = trackService.deleteById(id);
-      return  new ResponseEntity<>(trackRemoved,HttpStatus.OK);
-    }
-    @PatchMapping("track/{id}")
-    public ResponseEntity<?> updateById(@PathVariable int id, @RequestBody Track track){
-      Track trackUpdated= trackService.updateTrackbyId(id, track);
-      return new ResponseEntity<>(trackUpdated,HttpStatus.OK);
+  @GetMapping("tracks")
+  public ResponseEntity<?> getAllUsers() {
+    return new ResponseEntity<List<Track>>(trackService.getAllTracks(), HttpStatus.OK);
+  }
 
-    }
+  @DeleteMapping("track/{id}")
+  public ResponseEntity<?> deleteById(@PathVariable("id") int id) {
+
+    Track trackRemoved = trackService.deleteById(id);
+    return new ResponseEntity<>(trackRemoved, HttpStatus.OK);
+  }
+
+  @PatchMapping("track/{id}")
+  public ResponseEntity<?> updateById(@PathVariable int id, @RequestBody Track track) {
+    Track trackUpdated = trackService.updateTrackbyId(id, track);
+    return new ResponseEntity<>(trackUpdated, HttpStatus.OK);
 
   }
+
+}
 
 
